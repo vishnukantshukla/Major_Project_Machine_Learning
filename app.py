@@ -30,3 +30,11 @@ df.describe()
 df2=pd.read_csv("./data/Symptom-severity.csv")
 df2=df2.set_index('Symptom')
 df2.head()
+
+"""Reading Disease Precautions"""
+
+precaution=pd.read_csv("./data/symptom_precaution.csv")
+precaution['Disease']= precaution['Disease'].str.strip()
+precaution=precaution.set_index('Disease')
+
+precaution.head()
