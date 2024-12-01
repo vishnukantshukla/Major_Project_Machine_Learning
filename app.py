@@ -52,3 +52,14 @@ specialists['Disease']= specialists['Disease'].str.strip()
 specialists=specialists.set_index('Disease')
 specialists.head()
 
+
+"""**Extracting unique symptoms**"""
+
+columns=df[['Symptom_1', 'Symptom_2', 'Symptom_3', 'Symptom_4',
+       'Symptom_5', 'Symptom_6', 'Symptom_7', 'Symptom_8', 'Symptom_9',
+       'Symptom_10', 'Symptom_11', 'Symptom_12', 'Symptom_13', 'Symptom_14',
+       'Symptom_15', 'Symptom_16', 'Symptom_17']].values.flatten()
+columns=pd.unique(columns)
+columns=[str(s).strip().replace(" ","_").replace("__","_") for s in columns]
+columns.remove('nan')
+columns
