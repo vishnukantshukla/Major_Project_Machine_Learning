@@ -110,3 +110,15 @@ model=KNeighborsClassifier()
 model.fit(symptoms,diseases)
 y_pred=model.predict(x_test)
 y_pred
+
+"""**Checking accuracy of our model**"""
+
+print(accuracy_score(y_pred,y_test))
+print(classification_report(y_pred,y_test))
+print(confusion_matrix(y_pred,y_test))
+sns.heatmap(confusion_matrix(y_pred,y_test),xticklabels=df['Disease'].unique(),yticklabels=df['Disease'].unique())
+# plt.show()
+
+
+
+
