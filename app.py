@@ -96,3 +96,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score,confusion_matrix,f1_score,classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
+
+"""**Splitting into training and testing data**"""
+
+x_train,x_test,y_train,y_test=train_test_split(symptoms,diseases,test_size=0.1,random_state=42)
+x_train
+
+y_train
+
+"""**Using Decision Tree Classifier, fitting the model to training data and predicting result for test data**"""
