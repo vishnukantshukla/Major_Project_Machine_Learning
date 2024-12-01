@@ -153,3 +153,9 @@ for disease in u_diseases:
   disease_details[disease]=obj
 
 
+
+from flask import Flask,jsonify,request,Response,json
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
+
