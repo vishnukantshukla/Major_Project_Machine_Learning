@@ -45,3 +45,10 @@ description=pd.read_csv("./data/symptom_Description.csv")
 description['Disease']= description['Disease'].str.strip()
 description=description.set_index('Disease')
 description.head()
+
+"""Reading Disease Specialist"""
+specialists=pd.read_csv("./data/symptom_Specialist.csv")
+specialists['Disease']= specialists['Disease'].str.strip()
+specialists=specialists.set_index('Disease')
+specialists.head()
+
