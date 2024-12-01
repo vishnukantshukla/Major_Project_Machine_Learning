@@ -163,3 +163,23 @@ CORS(app)
 @app.route("/")
 def getSymptoms():
     return jsonify([columns,disease_details])
+
+@app.route("/",methods=['POST'])
+def predict():
+  syms=json.loads(request.data)
+  ndf=pd.DataFrame(index=[1],columns=columns)
+  for s in syms:
+    sym=str(s).strip().replace(" ","_").replace("__","_")
+    ndf[sym]=10
+    
+    if sym in df2.index:
+      if isinstance(df2.loc[sym]['weight'],np.int64):
+        ndf[sym]=int(df2.loc[sym]['weight'])
+  ndf=ndf.fillna(0)
+  disease=model.predict(ndf)[0];
+  print(disease)
+
+  return jsonify(disease)
+
+# app.run()
+
