@@ -24,3 +24,9 @@ df.head()
 df.describe()
 
 # df.info()
+
+"""**Reading symptom weights**"""
+
+df2=pd.read_csv("./data/Symptom-severity.csv")
+df2=df2.set_index('Symptom')
+df2.head()
