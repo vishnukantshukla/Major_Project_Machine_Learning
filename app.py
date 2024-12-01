@@ -122,3 +122,34 @@ sns.heatmap(confusion_matrix(y_pred,y_test),xticklabels=df['Disease'].unique(),y
 
 
 
+
+
+
+"""Creating python flask server
+
+"""
+u_diseases=pd.unique(diseases)
+disease_details={}
+for disease in u_diseases:
+  pre=precaution.loc[disease]
+  pre=pre.dropna()
+  pre=pre.values.tolist()
+
+  specialist=specialists.loc[disease].values.tolist()
+
+  desc=description.loc[disease]
+  desc=desc.values.tolist()
+
+  sym=df[df['Disease']==disease].values.flatten()
+  sym=pd.unique(sym)[1:].tolist()
+  sym=list(filter(lambda x:isinstance(x,str),sym))
+  
+  obj={}
+  obj['symptoms']=sym
+  obj['disease']=disease
+  obj['precautions']=pre
+  obj['description']=desc
+  obj['specialist']=specialist
+  disease_details[disease]=obj
+
+
