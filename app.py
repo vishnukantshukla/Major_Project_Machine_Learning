@@ -63,3 +63,30 @@ columns=pd.unique(columns)
 columns=[str(s).strip().replace(" ","_").replace("__","_") for s in columns]
 columns.remove('nan')
 columns
+
+"""**Creating new DataFrame**
+**Performing Data Pre Processing and data cleaning**
+"""
+
+adjusted_data=[]
+for r in range(len(df)):
+  ls=dict()
+  ls["Disease"]=df.iloc[r]["Disease"]
+  for s in df.iloc[r][1:]:
+    s=str(s).strip().replace(" ","_").replace("__","_")
+    if s=="nan":
+      continue
+    ls[s]=1
+    if s in df2.index:
+      if isinstance(df2.loc[s]['weight'],np.int64):
+        ls[s]=int(df2.loc[s]['weight'])
+  adjusted_data.append(ls.copy())
+
+adjusted_data=pd.DataFrame.from_dict(adjusted_data)
+
+diseases=adjusted_data["Disease"]
+symptoms=adjusted_data.drop(["Disease"],axis=1)
+symptoms=symptoms.fillna(0)
+
+print(symptoms)
+"""**Import Classifier model and metrics from sklearn library**"""
