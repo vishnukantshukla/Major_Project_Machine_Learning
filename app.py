@@ -105,3 +105,8 @@ x_train
 y_train
 
 """**Using Decision Tree Classifier, fitting the model to training data and predicting result for test data**"""
+
+model=KNeighborsClassifier()
+model.fit(symptoms,diseases)
+y_pred=model.predict(x_test)
+y_pred
