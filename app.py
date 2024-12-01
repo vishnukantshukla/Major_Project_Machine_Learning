@@ -38,3 +38,10 @@ precaution['Disease']= precaution['Disease'].str.strip()
 precaution=precaution.set_index('Disease')
 
 precaution.head()
+
+"""Reading Disease Description"""
+
+description=pd.read_csv("./data/symptom_Description.csv")
+description['Disease']= description['Disease'].str.strip()
+description=description.set_index('Disease')
+description.head()
